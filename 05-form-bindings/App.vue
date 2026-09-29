@@ -1,14 +1,14 @@
-<script>
-export default {
-  data() {
-    return {
-      text: ''
-    }
-  }
+<script setup>
+import { ref } from 'vue'
+
+const text = ref('')
+
+function onInput(e) {
+  text.value = e.target.value
 }
 </script>
 
 <template>
-  <input v-model="text" placeholder="Type here">
+  <input :value="text" @input="onInput" placeholder="Type here">
   <p>{{ text }}</p>
 </template>
