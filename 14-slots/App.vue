@@ -1,16 +1,8 @@
-<script>
+<script setup>
+import { ref } from 'vue'
 import ChildComp from './ChildComp.vue'
 
-export default {
-  components: {
-    ChildComp
-  },
-  data() {
-    return {
-      msg: 'from parent'
-    }
-  }
-}
+const msg = ref('from parent')
 </script>
 
 <template>
