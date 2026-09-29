@@ -1,31 +1,26 @@
-<script>
+<script setup>
+
+import { ref } from 'vue'
+
 // give each todo a unique id
 let id = 0
 
-export default {
+// reactive state for the new todo and the list of todos
+const newTodo = ref('')
+const todos = ref([
+  { id: id++, text: 'Learn HTML' },
+  { id: id++, text: 'Learn JavaScript' },
+  { id: id++, text: 'Learn Vue' }
+])
 
-  // reactive state for the new todo and the list of todos
-  data() {
-    return {
-      newTodo: '',
-      todos: [
-        { id: id++, text: 'Learn HTML' },
-        { id: id++, text: 'Learn JavaScript' },
-        { id: id++, text: 'Learn Vue' }
-      ]
-    }
-  },
+// methods for adding and removing todos
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value })
+  newTodo.value = ''
+}
 
-  // methods for adding and removing todos
-  methods: {
-    addTodo() {
-      this.todos.push({ id: id++, text: this.newTodo })
-      this.newTodo = ''
-    },
-    removeTodo(todo) {
-      this.todos = this.todos.filter((t) => t !== todo)
-    }
-  }
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
 }
 </script>
 
