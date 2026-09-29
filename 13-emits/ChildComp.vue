@@ -1,12 +1,9 @@
-<script>
-export default {
-  // Declaring the events that this component can emit to its parent
-  emits: ['response'],
-  created() {
-    // Emitting the 'response' event with a message when the component is created
-    this.$emit('response', 'hello from child')
-  }
-}
+<script setup>
+// Defining the events that this component can emit to its parent
+const emit = defineEmits(['response'])
+
+// Emitting the 'response' event with a message to the parent component
+emit('response', 'hello from child')
 </script>
 
 <template>
