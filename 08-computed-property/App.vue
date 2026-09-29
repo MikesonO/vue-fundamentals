@@ -1,38 +1,34 @@
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+
 let id = 0
 
-export default {
-  // reactive state for the new todo, the list of todos, and the hideCompleted flag
-  data() {
-    return {
-      newTodo: '',
-      hideCompleted: false,
-      todos: [
-        { id: id++, text: 'Learn HTML', done: true },
-        { id: id++, text: 'Learn JavaScript', done: true },
-        { id: id++, text: 'Learn Vue', done: false }
-      ]
-    }
-  },
-  // computed property for filtering todos based on hideCompleted
-  computed: {
-    filteredTodos() {
-      return this.hideCompleted
-        ? this.todos.filter((t) => !t.done)
-        : this.todos
-    }
-  },
-  // methods for adding and removing todos
-  methods: {
-    addTodo() {
-      this.todos.push({ id: id++, text: this.newTodo, done: false })
-      this.newTodo = ''
-    },
-    removeTodo(todo) {
-      this.todos = this.todos.filter((t) => t !== todo)
-    }
-  }
+// reactive state for the new todo, the list of todos, and the hideCompleted flag
+const newTodo = ref('')
+const hideCompleted = ref(false)
+const todos = ref([
+  { id: id++, text: 'Learn HTML', done: true },
+  { id: id++, text: 'Learn JavaScript', done: true },
+  { id: id++, text: 'Learn Vue', done: false }
+])
+
+// computed property for filtering todos based on hideCompleted
+const filteredTodos = computed(() => {
+  return hideCompleted.value
+    ? todos.value.filter((t) => !t.done)
+    : todos.value
+})
+
+// functions for adding and removing todos
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value, done: false })
+  newTodo.value = ''
 }
+
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
+}
+
 </script>
 
 <template>
