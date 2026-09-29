@@ -1,15 +1,10 @@
-<script>
-export default {
-  data() {
-    return {
-      awesome: true
-    }
-  },
-  methods: {
-    toggle() {
-      this.awesome = !this.awesome
-    }
-  }
+<script setup>
+import { ref } from 'vue'
+
+const awesome = ref(true)
+
+function toggle() {
+  awesome.value = !awesome.value
 }
 </script>
 
