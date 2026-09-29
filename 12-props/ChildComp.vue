@@ -1,10 +1,8 @@
-<script>
-export default {
-  // Defining the props that this component expects to receive from its parent
-  props: {
-    msg: String
-  }
-}
+<script setup>
+// Defining the props that this component expects to receive from its parent
+const props = defineProps({
+  msg: String
+})
 </script>
 
 <template>
