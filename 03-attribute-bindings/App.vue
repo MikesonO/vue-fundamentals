@@ -1,11 +1,7 @@
-<script>
-export default {
-  data() {
-    return {
-      titleClass: 'title'
-    }
-  }
-}
+<script setup>
+import { ref } from 'vue'
+
+const titleClass = ref('title')
 </script>
 
 <template>
